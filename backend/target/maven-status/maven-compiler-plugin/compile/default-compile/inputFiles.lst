@@ -1,3 +1,10 @@
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\BackendApplication.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\client\TmdbClient.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\client\TmdbClientImplementation.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\RestClientConfig.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\TmdbApiProperties.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\controller\ManualTmdbController.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\dto\TmdbImageBaseUrl.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\dto\TmdbMovieDetails.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\dto\TmdbPosterPaths.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\dto\TmdbTrendingMovies.java
