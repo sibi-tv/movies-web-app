@@ -7,3 +7,4 @@ server:
 
 tmdb:
   base-url: https://api.themoviedb.org/3
+  api-key: ${TMDB_API_KEY}
