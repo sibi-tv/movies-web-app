@@ -20,7 +20,7 @@ public class MovieController {
     private final MovieService service;
 
     @GetMapping("/trending/movie")
-    public List<MovieSummaryDto> trending(@RequestParam(defaultValue = "day") String window) {
+    public List<MovieSummaryDto> trendingMovies(@RequestParam(defaultValue = "day") String window) {
         try {
             TrendingWindow trendWindow = TrendingWindow.determineParamWindow(window);
             return service.getTrendingMovies(trendWindow);
@@ -30,7 +30,7 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{id}")
-    public MovieDetailsDto details(@PathVariable long id) {
+    public MovieDetailsDto movieDetails(@PathVariable long id) {
         if (id <= 0) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid id: id must be greater than 0");
         }

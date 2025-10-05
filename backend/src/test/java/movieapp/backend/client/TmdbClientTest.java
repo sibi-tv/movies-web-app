@@ -76,22 +76,6 @@ public class TmdbClientTest {
      * Trending Movies Exception Handling Test Case
      */
     @Test
-    void trendingMovies_BadRequestExceptionHandling() {
-
-        stubFor(get(urlEqualTo("/3/trending/movie/month"))
-                .willReturn(aResponse().withStatus(HttpStatus.BAD_REQUEST.value())));
-
-        ResponseStatusException thrown = Assertions.assertThrows(
-                ResponseStatusException.class, () -> tmdbClient.fetchTrendingMovies("month"));
-
-        Assertions.assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
-
-        String badRequestErrorMessage = "Invalid time window: must be 'day' or 'week'";
-        Assertions.assertTrue(thrown.getMessage().contains(badRequestErrorMessage));
-    }
-
-
-    @Test
     void trendingMovies_BadGatewayExceptionHandling() {
 
         stubFor(get(urlEqualTo("/3/trending/movie/week"))

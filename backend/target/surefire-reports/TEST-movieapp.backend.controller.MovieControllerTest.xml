@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="movieapp.backend.BackendApplicationTests" time="4.004" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="movieapp.backend.controller.MovieControllerTest" time="1.18" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -46,8 +46,11 @@
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="java.vendor.version" value="Temurin-17.0.16+8"/>
     <property name="localRepository" value="C:\Users\17327\.m2\repository"/>
+    <property name="javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom" value="com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl"/>
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="jetty.git.hash" value="5dfc59a691b748796f922208956bd1f2794bcd16"/>
     <property name="java.io.tmpdir" value="C:\Users\17327\AppData\Local\Temp\"/>
+    <property name="wiremock.org.eclipse.jetty.http.HttpGenerator.STRICT" value="true"/>
     <property name="java.version" value="17.0.16"/>
     <property name="user.dir" value="C:\Users\17327\OneDrive\Desktop\movies-web-app\backend"/>
     <property name="os.arch" value="amd64"/>
@@ -62,12 +65,13 @@
     <property name="java.vm.version" value="17.0.16+8"/>
     <property name="java.specification.maintenance.version" value="1"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="javax.xml.transform.TransformerFactory" value="com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl"/>
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[backend] "/>
   </properties>
-  <testcase name="contextLoads" classname="movieapp.backend.BackendApplicationTests" time="0.898">
-    <system-out><![CDATA[06:00:54.971 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [movieapp.backend.BackendApplicationTests]: BackendApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-06:00:55.134 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration movieapp.backend.BackendApplication for test class movieapp.backend.BackendApplicationTests
+  <testcase name="movieDetails_handlingInvalidId" classname="movieapp.backend.controller.MovieControllerTest" time="0.102">
+    <system-out><![CDATA[2025-10-05T06:01:01.219-04:00  INFO 31416 --- [backend] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [movieapp.backend.controller.MovieControllerTest]: MovieControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-10-05T06:01:01.273-04:00  INFO 31416 --- [backend] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration movieapp.backend.BackendApplication for test class movieapp.backend.controller.MovieControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,9 +82,16 @@
 
  :: Spring Boot ::                (v3.5.6)
 
-2025-10-05T06:00:55.853-04:00  INFO 31416 --- [backend] [           main] m.backend.BackendApplicationTests        : Starting BackendApplicationTests using Java 17.0.16 with PID 31416 (started by 17327 in C:\Users\17327\OneDrive\Desktop\movies-web-app\backend)
-2025-10-05T06:00:55.855-04:00  INFO 31416 --- [backend] [           main] m.backend.BackendApplicationTests        : No active profile set, falling back to 1 default profile: "default"
-2025-10-05T06:00:57.838-04:00  INFO 31416 --- [backend] [           main] m.backend.BackendApplicationTests        : Started BackendApplicationTests in 2.478 seconds (process running for 3.849)
+2025-10-05T06:01:01.314-04:00  INFO 31416 --- [backend] [           main] m.b.controller.MovieControllerTest       : Starting MovieControllerTest using Java 17.0.16 with PID 31416 (started by 17327 in C:\Users\17327\OneDrive\Desktop\movies-web-app\backend)
+2025-10-05T06:01:01.314-04:00  INFO 31416 --- [backend] [           main] m.b.controller.MovieControllerTest       : No active profile set, falling back to 1 default profile: "default"
+2025-10-05T06:01:02.005-04:00  INFO 31416 --- [backend] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-10-05T06:01:02.005-04:00  INFO 31416 --- [backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-10-05T06:01:02.006-04:00  INFO 31416 --- [backend] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-10-05T06:01:02.027-04:00  INFO 31416 --- [backend] [           main] m.b.controller.MovieControllerTest       : Started MovieControllerTest in 0.75 seconds (process running for 8.038)
 ]]></system-out>
   </testcase>
+  <testcase name="trendingMovies_happyPathScenario" classname="movieapp.backend.controller.MovieControllerTest" time="0.21"/>
+  <testcase name="movieDetails_handlingNonExistentId" classname="movieapp.backend.controller.MovieControllerTest" time="0.019"/>
+  <testcase name="movieDetails_handlingBadGateway" classname="movieapp.backend.controller.MovieControllerTest" time="0.008"/>
+  <testcase name="trendingMovies_handlingInvalidWindow" classname="movieapp.backend.controller.MovieControllerTest" time="0.008"/>
 </testsuite>
