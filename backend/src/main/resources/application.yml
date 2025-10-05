@@ -1,6 +1,8 @@
 spring:
   application:
     name: backend
+  cache:
+    type: caffeine
 
 server:
   port: 8080

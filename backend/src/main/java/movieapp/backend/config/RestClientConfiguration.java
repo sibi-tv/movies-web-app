@@ -10,7 +10,7 @@ import org.springframework.web.client.RestClient;
 import java.time.Duration;
 
 @Configuration
-public class RestClientConfig {
+public class RestClientConfiguration {
 
     @Bean
     public RestClient tmdbRestClient(TmdbApiProperties tmdbApiProperties) {

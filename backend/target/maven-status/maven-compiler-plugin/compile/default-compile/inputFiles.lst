@@ -1,7 +1,8 @@
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\BackendApplication.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\client\TmdbClient.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\client\TmdbClientImplementation.java
-C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\RestClientConfig.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\CacheConfiguration.java
+C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\RestClientConfiguration.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\config\TmdbApiProperties.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\controller\ManualTmdbController.java
 C:\Users\17327\OneDrive\Desktop\movies-web-app\backend\src\main\java\movieapp\backend\controller\MovieController.java
