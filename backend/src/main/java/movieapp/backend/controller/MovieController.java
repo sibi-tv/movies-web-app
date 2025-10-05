@@ -21,7 +21,6 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping("/trending/movie")
-    @Cacheable(cacheNames = "trendingMoviesCache", key = "#window.name()", unless = "#result == null || #result.isEmpty()")
     public List<MovieSummaryDto> trendingMovies(@RequestParam(defaultValue = "day") String window) {
         try {
             TrendingWindow trendWindow = TrendingWindow.determineParamWindow(window);

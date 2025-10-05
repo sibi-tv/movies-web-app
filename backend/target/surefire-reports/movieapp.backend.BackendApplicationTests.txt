@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: movieapp.backend.BackendApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.028 s -- in movieapp.backend.BackendApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.728 s -- in movieapp.backend.BackendApplicationTests

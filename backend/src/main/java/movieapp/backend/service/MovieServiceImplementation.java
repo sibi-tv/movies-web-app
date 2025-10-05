@@ -3,6 +3,7 @@ package movieapp.backend.service;
 import lombok.AllArgsConstructor;
 import movieapp.backend.client.TmdbClient;
 import movieapp.backend.dto.*;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class MovieServiceImplementation implements MovieService{
     private final TmdbClient tmdbClient;
 
     @Override
+    @Cacheable(cacheNames = "trendingMoviesCache", key = "#window.name()", unless = "#result == null || #result.isEmpty()")
     public List<MovieSummaryDto> getTrendingMovies(TrendingWindow window) {
         String windowParam = window.returnWindowType();
         TmdbTrendingMovies movieList = tmdbClient.fetchTrendingMovies(window.returnWindowType());
