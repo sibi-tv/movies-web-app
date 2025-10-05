@@ -1,4 +1,6 @@
 HELP.md
+.env
+ManualTmdbController.java
 # .mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
