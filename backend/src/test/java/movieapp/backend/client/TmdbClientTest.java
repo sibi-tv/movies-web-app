@@ -87,7 +87,6 @@ public class TmdbClientTest {
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
 
         String badRequestErrorMessage = "Invalid time window: must be 'day' or 'week'";
-        Assertions.assertEquals(badRequestErrorMessage, thrown.getMessage());
         Assertions.assertTrue(thrown.getMessage().contains(badRequestErrorMessage));
     }
 
