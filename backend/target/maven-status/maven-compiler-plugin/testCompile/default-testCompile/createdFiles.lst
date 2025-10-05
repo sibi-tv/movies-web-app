@@ -1,1 +1,5 @@
 movieapp\backend\BackendApplicationTests.class
+movieapp\backend\service\MovieServiceTest.class
+movieapp\backend\controller\MovieControllerTest.class
+movieapp\backend\service\MovieServiceCacheTest.class
+movieapp\backend\client\TmdbClientTest.class
