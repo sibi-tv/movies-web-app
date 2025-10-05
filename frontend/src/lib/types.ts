@@ -1,4 +1,4 @@
-export type MovieSummary = {
+type MovieSummary = {
   id: number
   title: string
   imageUrl: string
@@ -6,7 +6,7 @@ export type MovieSummary = {
   releaseDate: string
 }
 
-export type MovieDetails = {
+type MovieDetails = {
   id: number
   title: string
   overview: string
@@ -16,3 +16,5 @@ export type MovieDetails = {
   imageUrl: string
   voteAverage?: number
 }
+
+export type {MovieSummary, MovieDetails};

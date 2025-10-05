@@ -23,7 +23,7 @@ const useTrendingMovies = (window: 'day'|'week') => {
 
     useEffect(() => { loadTrendingMovies() })
 
-    return { trendingMovies, error, loading, reload: loadTrendingMovies }
+    return { trendingMovies, error, loading, loadTrendingMovies }
 }
 
 export default useTrendingMovies;

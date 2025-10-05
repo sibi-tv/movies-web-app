@@ -4,7 +4,7 @@ import HomePage from "../pages/HomePage";
 import DetailsPage from "../pages/DetailsPage";
 import NotFound from "../pages/NotFound";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
@@ -15,3 +15,5 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+export default router;
