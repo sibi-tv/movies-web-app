@@ -15,4 +15,8 @@ import org.springframework.context.annotation.Configuration;
 public class TmdbApiProperties {
     @NotBlank String baseUrl;
     @NotBlank String apiKey;
+
+    public TmdbApiProperties(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 }

@@ -25,13 +25,15 @@ public class TmdbClientImplementation implements TmdbClient{
         String endpoint = "/trending/movie/" + window;
         String fullUri = tmdbApiProperties.getBaseUrl() + endpoint;
 
+        if (!("day".equals(window) || "week".equals(window))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid time window: must be 'day' or 'week'");
+        }
+
         try {
             return restClient.get()
                     .uri(fullUri)
                     .retrieve()
                     .body(TmdbTrendingMovies.class);
-        } catch (HttpClientErrorException.NotFound e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "TMDB list of trending movies not found", e);
         } catch (HttpStatusCodeException e) {
             throw new ResponseStatusException(HttpStatus.BAD_GATEWAY, "TMDB error: " + e.getStatusCode().value(), e);
         }
