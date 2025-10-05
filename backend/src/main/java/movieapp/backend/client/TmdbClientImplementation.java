@@ -25,10 +25,6 @@ public class TmdbClientImplementation implements TmdbClient{
         String endpoint = "/trending/movie/" + window;
         String fullUri = tmdbApiProperties.getBaseUrl() + endpoint;
 
-        if (!("day".equals(window) || "week".equals(window))) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid time window: must be 'day' or 'week'");
-        }
-
         try {
             return restClient.get()
                     .uri(fullUri)
