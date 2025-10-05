@@ -1,6 +1,9 @@
 package movieapp.backend.controller;
 
+import movieapp.backend.dto.MovieDetailsDto;
 import movieapp.backend.dto.MovieSummaryDto;
+import movieapp.backend.dto.TmdbImageBaseUrl;
+import movieapp.backend.dto.TmdbMovieDetails;
 import movieapp.backend.service.MovieService;
 import movieapp.backend.service.TrendingWindow;
 import org.junit.jupiter.api.Test;
@@ -32,13 +35,15 @@ public class MovieControllerTest {
 
         long movieId = 5175;
 
-        when(movieService.getTrendingMovies(TrendingWindow.DAY)).thenReturn(List.of( new MovieSummaryDto(
+        List<MovieSummaryDto> movieSummaryDto = List.of( new MovieSummaryDto(
                 movieId,
                 "Rush Hour 2",
                 "/nmllsevWzx7XtrlARs3hHJn5Pf.jpg",
                 6.749,
                 "2001-08-03"
-        )));
+        ));
+
+        when(movieService.getTrendingMovies(TrendingWindow.DAY)).thenReturn(movieSummaryDto);
 
         mockMvc.perform(get("/api/trending/movie").param("window", "day"))
                 .andExpect(status().isOk())
@@ -49,6 +54,35 @@ public class MovieControllerTest {
     void trendingMovies_handlingInvalidWindow() throws Exception {
         mockMvc.perform(get("/api/trending/movie").param("window", "month"))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void movieDetails_happyPathScenario() throws Exception {
+
+        long movieId = 5175;
+
+        List<String> genres = List.of("Action", "Comedy", "Crime");
+
+        MovieDetailsDto movieDetails = new MovieDetailsDto(
+                movieId,
+                "Rush Hour 2",
+                "It's vacation time for Carter  as he finds himself alongside Lee in Hong Kong wishing . . .",
+                genres,
+                90,
+                "2001-08-03",
+                "http://image.tmdb.org/t/p/w500/nmllsevWzx7XtrlARs3hHJn5Pf.jpg",
+                6.749
+        );
+
+        when(movieService.getMovie(movieId)).thenReturn(movieDetails);
+
+        mockMvc.perform(get("/api/movies/{id}", movieId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(movieId))
+                .andExpect(jsonPath("$.title").value("Rush Hour 2"))
+                .andExpect(jsonPath("$.releaseDate").value("2001-08-03"))
+                .andExpect(jsonPath("$.voteAverage").value(6.749));
+
     }
 
     @Test

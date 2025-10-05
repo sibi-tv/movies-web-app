@@ -13,6 +13,12 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * Both test cases are happy path test cases.
+ * MovieService is set up so that it only passes appropriate inputs to TmdbClient.
+ * MovieController handles the exceptions and bad request possibilities
+ */
+
 @ExtendWith(MockitoExtension.class)
 public class MovieServiceTest {
     @Mock
@@ -92,7 +98,7 @@ public class MovieServiceTest {
                 backdropSizes,
                 profileSizes
         );
-        TmdbImageBaseUrl images = new TmdbImageBaseUrl(imageDetails);/* TmdbImageBaseUrl with baseUrl + posterSizes array where index 4 = "w500" */;
+        TmdbImageBaseUrl images = new TmdbImageBaseUrl(imageDetails);
         when(tmdbClient.fetchMovieById(movieId)).thenReturn(movieDetails);
         when(tmdbClient.fetchImageUrlAndSize()).thenReturn(images);
 
