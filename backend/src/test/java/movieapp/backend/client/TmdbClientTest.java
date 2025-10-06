@@ -131,7 +131,7 @@ public class TmdbClientTest {
 
         Assertions.assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
 
-        String notFoundErrorMessage = "TMDB movie not found";
+        String notFoundErrorMessage = "TMDB movie was not found";
         Assertions.assertTrue(thrown.getMessage().contains(notFoundErrorMessage));
     }
 

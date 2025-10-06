@@ -2,12 +2,14 @@ import useTrendingMovies from "../hooks/useTrendingMovies";
 import { useState } from "react";
 import type { MovieSummary } from "../lib/types";
 import SkeletonGrid from "../components/SkeletonGrid";
-import { Link } from "react-router-dom";
+import { useFavorites } from "../hooks/useFavorites";
+import MovieCard from "../components/MovieCard";
 
 // MESSY NEEDS CLEANING UP 
 export default function HomePage() {
 
   const [win, setWin] = useState<'day'|'week'>('day');
+  const { has, toggle } = useFavorites();
   const { trendingMovies, error, loading, loadTrendingMovies } = useTrendingMovies(win);
 
   const hasData = Array.isArray(trendingMovies) && trendingMovies.length > 0;
@@ -51,13 +53,14 @@ export default function HomePage() {
       )}
 
       {!loading && !error && hasData && (
-        <div className="md: grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           {trendingMovies!.map((m: MovieSummary) => (
-            <Link to={`/movies/${m.id}`} key={m.id} className="flex-col items-center justify-center rounded-2xl border border-gray-200 p-4">
-              <img src={m.imageUrl} className="flex-auto"/>
-              <div className="mt-2 text-sm font-semibold line-clamp-2">{m.title}</div>
-              <div className="mt-1 text-xs text-gray-500">⭐ {m.voteAverage ?? "—"}</div>
-            </Link>
+            <MovieCard
+              key={m.id}
+              movie={m}
+              isFavorite={has(m.id)}
+              onToggleFavorite={toggle}
+            />
           ))}
         </div>
       )}
