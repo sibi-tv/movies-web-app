@@ -68,6 +68,7 @@ java -version
 In the frontend terminal, run the following commands:
 
 npm ci
+
 npm run dev
 
 You should see that the application is available on "http://localhost:3000" if Port 3000 is not in use, or a different port if it is in use
