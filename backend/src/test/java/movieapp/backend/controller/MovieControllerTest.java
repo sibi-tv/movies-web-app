@@ -2,8 +2,6 @@ package movieapp.backend.controller;
 
 import movieapp.backend.dto.MovieDetailsDto;
 import movieapp.backend.dto.MovieSummaryDto;
-import movieapp.backend.dto.TmdbImageBaseUrl;
-import movieapp.backend.dto.TmdbMovieDetails;
 import movieapp.backend.service.MovieService;
 import movieapp.backend.service.TrendingWindow;
 import org.junit.jupiter.api.Test;

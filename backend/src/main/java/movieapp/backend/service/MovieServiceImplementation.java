@@ -18,7 +18,7 @@ public class MovieServiceImplementation implements MovieService{
     @Cacheable(cacheNames = "trendingMoviesCache", key = "#window.name()", unless = "#result == null || #result.isEmpty()")
     public List<MovieSummaryDto> getTrendingMovies(TrendingWindow window) {
         String windowParam = window.returnWindowType();
-        TmdbTrendingMovies movieList = tmdbClient.fetchTrendingMovies(window.returnWindowType());
+        TmdbTrendingMovies movieList = tmdbClient.fetchTrendingMovies(windowParam);
         TmdbImageBaseUrl imageBaseUrl = tmdbClient.fetchImageUrlAndSize();
         String smallPosterSize = imageBaseUrl.images().posterSizes()[2]; // Size is "w185"
 
