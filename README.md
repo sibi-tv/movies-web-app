@@ -3,6 +3,7 @@
 This project can be used to fetch a list of trending movies based on the TMDB API.
 If you would like, you can also compile a list of your favorite movies!
 Check out the repo here: https://github.com/sibi-tv/movies-web-app
+Check out the repo here: https://github.com/sibi-tv/movies-web-app
 
 ### Prerequisite Details
 Java version installed must be version 17.0.16 or higher
@@ -20,7 +21,7 @@ On the other terminal cd frontend
 Once you have the "API Read Access Token" from the TMDB API, go into your backend terminal and set it as an environment variable
 
 #### Windows Users:
-'$env:TMDB_API_KEY="your access token"'
+$env:TMDB_API_KEY="your access token"
 
 #### Mac Users:
 export TMDB_API_KEY="your access token"
