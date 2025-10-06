@@ -28,7 +28,7 @@ public class MovieServiceTest {
     MovieServiceImplementation movieServiceImplementation;
 
     @Test
-    void getTrending_mapsTmdbToSummaries() {
+    void getTrendingMovies_mapsTmdbMoviesToSummaryDtos() {
 
         long movieId = 5175;
 

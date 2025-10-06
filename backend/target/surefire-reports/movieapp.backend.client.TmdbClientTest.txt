@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: movieapp.backend.client.TmdbClientTest
--------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.367 s -- in movieapp.backend.client.TmdbClientTest

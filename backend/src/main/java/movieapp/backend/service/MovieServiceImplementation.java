@@ -46,7 +46,6 @@ public class MovieServiceImplementation implements MovieService{
                 movieDetails.releaseDate(),
                 imageBaseUrl.images().baseUrl() + largePosterSize + movieDetails.posterPath(),
                 movieDetails.voteAverage() == null ? 0.0 : movieDetails.voteAverage()
-                //movieDetails.voteAverage()
         );
     }
 }

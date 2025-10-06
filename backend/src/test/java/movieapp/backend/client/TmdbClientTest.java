@@ -4,7 +4,6 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import movieapp.backend.config.TmdbApiProperties;
 import movieapp.backend.dto.TmdbImageBaseUrl;
 import movieapp.backend.dto.TmdbMovieDetails;
-import movieapp.backend.dto.TmdbPosterPaths;
 import movieapp.backend.dto.TmdbTrendingMovies;
 import org.junit.jupiter.api.*;
 import org.springframework.http.HttpStatus;
@@ -190,73 +189,6 @@ public class TmdbClientTest {
 
         ResponseStatusException thrown = Assertions.assertThrows(
                         ResponseStatusException.class, () -> tmdbClient.fetchImageUrlAndSize());
-
-        Assertions.assertEquals(HttpStatus.BAD_GATEWAY, thrown.getStatusCode());
-    }
-
-    /**
-     * Poster Paths Happy Path Test Case
-     */
-    @Test
-    void posterPaths_Success() {
-
-        long movieId = 5175;
-        int postersSize = 1;
-
-        stubFor(get(urlPathEqualTo("/3/movie/" + movieId + "/images"))
-                .withQueryParam("language", equalTo("en-US"))
-                .withQueryParam("include_image_language", matching("(?i).*en.*"))
-                .willReturn(okJson("""
-                    {
-                      "id": 5175,
-                      "backdrops": [],
-                      "posters": [
-                        { "aspect_ratio": 0.667, "file_path": "/rushhour2_en.jpg", "height": 3000, "width": 2000, "iso_639_1": "en", "vote_average": 5.2, "vote_count": 12 }
-                      ],
-                      "logos": []
-                    }
-                """)));
-
-        TmdbPosterPaths posterResponse = tmdbClient.fetchPosterPaths(movieId, "en-US", "en,null");
-
-        Assertions.assertEquals(postersSize, posterResponse.posters().size());
-        Assertions.assertEquals("/rushhour2_en.jpg", posterResponse.posters().get(0).filePath());
-    }
-
-    /**
-     * Poster Paths Exception Handling Test Cases
-     */
-    @Test
-    void posterPaths_NotFoundExceptionHandling() {
-
-        long invalidMovieId = 999999999L;
-
-        stubFor(get(urlPathEqualTo("/3/movie/" + invalidMovieId + "/images"))
-                .withQueryParam("language", equalTo("en-US"))
-                .withQueryParam("include_image_language", matching("(?i).*en.*"))
-                .willReturn(aResponse().withStatus(404)));
-
-        ResponseStatusException thrown = Assertions.assertThrows(
-                ResponseStatusException.class, () -> tmdbClient.fetchPosterPaths(invalidMovieId, "", "en"));
-
-        Assertions.assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
-
-        String notFoundErrorMessage = "TMDB movie not found";
-        Assertions.assertTrue(thrown.getMessage().contains(notFoundErrorMessage));
-    }
-
-    @Test
-    void posterPaths_BadGatewayExceptionHandling() {
-
-        long movieId = 5175;
-
-        stubFor(get(urlPathEqualTo("/3/movie/" + movieId + "/images"))
-                .withQueryParam("language", equalTo("en-US"))
-                .withQueryParam("include_image_language", matching("(?i).*en.*"))
-                .willReturn(aResponse().withStatus(500)));
-
-        ResponseStatusException thrown = Assertions.assertThrows(
-                ResponseStatusException.class, () -> tmdbClient.fetchPosterPaths(movieId, "en-US", "en,null"));
 
         Assertions.assertEquals(HttpStatus.BAD_GATEWAY, thrown.getStatusCode());
     }

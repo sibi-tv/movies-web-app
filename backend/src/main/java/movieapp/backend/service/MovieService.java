@@ -9,5 +9,4 @@ import java.util.List;
 public interface MovieService {
     List<MovieSummaryDto> getTrendingMovies(TrendingWindow window);
     MovieDetailsDto getMovie(long id);
-
 }
